@@ -2,6 +2,10 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+
+    font-family: "Ubuntu", serif;
+    font-weight: 400;
+    font-style: normal;
 }
 
 .flex {
@@ -12,6 +16,10 @@
 .flex-center {
     justify-content: center;
     align-items: center;
+}
+
+.flex-col {
+    flex-direction: column;
 }
 
 .btn {
@@ -45,4 +53,15 @@
 
 .search-btn {
     width: 600px;
+}
+
+.days-title-container {
+    margin-top: 100px;
+    margin-bottom: 30px;
+    font-size: 3rem;
+}
+
+.weather-card-row {
+    margin: 100px 0;
+    gap: 500px;
 }

@@ -5,7 +5,7 @@ function Hero() {
         <div className="hero">
             <Header></Header>
         </div>
-    )
+    );
 }
 
 export default Hero

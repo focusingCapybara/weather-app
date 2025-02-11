@@ -34,6 +34,9 @@
     margin-right: auto;
 }
 
-.colItem {
+.valueItem {
+    display: flex;
+    align-items: center;
+    height: 50px;
     color: white;
 }

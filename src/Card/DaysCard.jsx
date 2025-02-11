@@ -1,59 +1,99 @@
+import { WiDaySunny, WiDaySunnyOvercast, WiFog, WiRain, WiSnow, WiThunderstorm } from "react-icons/wi";
 import styles from "./Card.module.css"
 
-function DaysCard() {
+function DaysCard(props) {
+    function getIconArray() {
+        console.log(props.weatherCodes)
+
+        let array = [];
+        props.weatherCodes.forEach(code => {
+            if (code == 0) {
+                array.push(<WiDaySunny size={50} color="white"></WiDaySunny>);
+            }
+            else if (code >= 1 && code <= 3) {
+                array.push(<WiDaySunnyOvercast size={50} color="white"></WiDaySunnyOvercast>);
+            }
+            else if (code >= 45 && code <= 48) {
+                array.push(<WiFog size={50} color="white"></WiFog>);
+            }
+            else if (code >= 51 && code <= 55) {
+                array.push("");
+            }
+            else if (code >= 56 && code <= 57) {
+                array.push("");
+            }
+            else if (code >= 61 && code <= 65) {
+                array.push(<WiRain size={50} color="white"></WiRain>);
+            }
+            else if (code >= 66 && code <= 67) {
+                array.push("");
+            }
+            else if (code >= 71 && code <= 75) {
+                array.push(<WiSnow size={50} color="white"></WiSnow>);
+            }
+            else if (code == 77) {
+                array.push("");
+            }
+            else if (code >= 80 && code <= 82) {
+                array.push("");
+            }
+            else if (code >= 85 && code <= 86) {
+                array.push("");
+            }
+            else if (code == 95) {
+                array.push(<WiThunderstorm size={50} color="white"></WiThunderstorm>);
+            }
+            else if (code >= 96 && code <= 99)
+                array.push(<WiThunderstorm size={50} color="white"></WiThunderstorm>);
+            }
+        );
+
+        return array;
+    }
+
+    const iconCodes = getIconArray();
+
     return (
         <div className={`${styles.daysCard} ${styles.card} flex`}>
             <div className={`${styles.dayCol} flex flex-col`}>
-                <span className={styles.colItem}>Monday</span>
-                <span className={styles.colItem}>Tuesday</span>
-                <span className={styles.colItem}>Wednesday</span>
-                <span className={styles.colItem}>Thursday</span>
-                <span className={styles.colItem}>Friday</span>
-                <span className={styles.colItem}>Saturday</span>
-                <span className={styles.colItem}>Sunday</span>
+                <span className={styles.valueItem}>Monday</span>
+                <span className={styles.valueItem}>Tuesday</span>
+                <span className={styles.valueItem}>Wednesday</span>
+                <span className={styles.valueItem}>Thursday</span>
+                <span className={styles.valueItem}>Friday</span>
+                <span className={styles.valueItem}>Saturday</span>
+                <span className={styles.valueItem}>Sunday</span>
             </div>
 
             <div className={`${styles.dayLogoCol} flex flex-col`}>
-                <span className={styles.colItem}>Test</span>
-                <span className={styles.colItem}>Test</span>
-                <span className={styles.colItem}>Test</span>
-                <span className={styles.colItem}>Test</span>
-                <span className={styles.colItem}>Test</span>
-                <span className={styles.colItem}>Test</span>
-                <span className={styles.colItem}>Test</span>
+                {iconCodes.map((icon, index) => (
+                    <span key={index} className={styles.valueItem}>{icon}</span>
+                ))}
             </div>
 
-            <div className={`${styles.nightLogoCol} flex flex-col`}>
-                <span className={styles.colItem}>Test</span>
-                <span className={styles.colItem}>Test</span>
-                <span className={styles.colItem}>Test</span>
-                <span className={styles.colItem}>Test</span>
-                <span className={styles.colItem}>Test</span>
-                <span className={styles.colItem}>Test</span>
-                <span className={styles.colItem}>Test</span>
+            <div className={`${styles.nightLogoCol} flex flex-center flex-col`}>
+                <span className={styles.valueItem}>Test</span>
+                <span className={styles.valueItem}>Test</span>
+                <span className={styles.valueItem}>Test</span>
+                <span className={styles.valueItem}>Test</span>
+                <span className={styles.valueItem}>Test</span>
+                <span className={styles.valueItem}>Test</span>
+                <span className={styles.valueItem}>Test</span>
             </div>
 
             <div className={`${styles.dayTempCol} flex flex-col`}>
-                <span className={styles.colItem}>Test</span>
-                <span className={styles.colItem}>Test</span>
-                <span className={styles.colItem}>Test</span>
-                <span className={styles.colItem}>Test</span>
-                <span className={styles.colItem}>Test</span>
-                <span className={styles.colItem}>Test</span>
-                <span className={styles.colItem}>Test</span>
+                {props.maxTemperatures.map((temp, index) => (
+                    <span key={index} className={styles.valueItem}>{temp}°C</span>
+                ))}
             </div>
 
             <div className={`${styles.nightTempCol} flex flex-col`}>
-                <span className={styles.colItem}>Test</span>
-                <span className={styles.colItem}>Test</span>
-                <span className={styles.colItem}>Test</span>
-                <span className={styles.colItem}>Test</span>
-                <span className={styles.colItem}>Test</span>
-                <span className={styles.colItem}>Test</span>
-                <span className={styles.colItem}>Test</span>
+                {props.minTemperatures.map((temp, index) => (
+                    <span key={index} className={styles.valueItem}>{temp}°C</span>
+                ))}
             </div>
         </div>
-    )
+    );
 }
 
 export default DaysCard

@@ -70,3 +70,27 @@ body {
     opacity: 0;
     transition: opacity 1s ease-in;
 }
+
+.hero,
+.weather-hour-row,
+.weather-stats-section {
+    position: relative;
+}
+
+.hero,
+.weather-stats-section {
+    z-index: 1;
+}
+
+.weather-stats-section {
+    margin-top: 200px;
+}
+
+.weather-hour-row {
+    position: absolute;
+    transform: translateX(-50%);
+    width: 100%;
+    top: 61.5%;
+    left: 50%;
+    z-index: 2;
+}

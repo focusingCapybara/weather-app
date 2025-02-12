@@ -3,7 +3,7 @@ import DaysCard from "./Card/DaysCard.jsx"
 
 function WeatherStatsSection(props) {
     return (
-        <>
+        <div className="weather-stats-section">
             <div className="days-title-container flex flex-center">
                 <h2>7-Day Forecast</h2>
             </div>
@@ -17,7 +17,7 @@ function WeatherStatsSection(props) {
                 <StatsCard title="Humidity" value={props.humidity} unit="%"></StatsCard>
                 <StatsCard title="Pressure" value={props.pressure}></StatsCard>
             </div>
-        </>
+        </div>
     );
 }
 

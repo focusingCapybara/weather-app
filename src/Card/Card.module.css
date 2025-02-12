@@ -38,5 +38,24 @@
     display: flex;
     align-items: center;
     height: 50px;
+    width: 50px;
     color: white;
+}
+
+.hourCol .valueItem,
+.hourTempCol .valueItem {
+    display: inline-block;
+    text-align: center;
+    height: 30px;
+}
+
+.hourForecast {
+    padding: 30px;
+    gap: 15px;
+}
+
+.hourCol,
+.hourCodeCol,
+.hourTempCol {
+    gap: 50px;
 }

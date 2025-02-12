@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 
-import Hero from "./Hero"
-import WeatherStatsSection from "./WeatherStatsSection"
-import HourForecast from "./HourForecast";
+import Hero from "./components/Hero.jsx"
+import WeatherStatsSection from "./components/WeatherStatsSection.jsx"
+import HourForecast from "./components/Card/HourForecast.jsx";
 
 function App() {
 	const [error, setError] = useState(null);

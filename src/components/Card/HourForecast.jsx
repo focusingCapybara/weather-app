@@ -1,5 +1,5 @@
 import { WiDaySunny, WiDaySunnyOvercast, WiCloud, WiFog, WiRain, WiSnow, WiThunderstorm } from "react-icons/wi";
-import styles from "./Card/Card.module.css"
+import styles from "./Card.module.css"
 
 function HourForecast(props) {
     function getIconArray() {

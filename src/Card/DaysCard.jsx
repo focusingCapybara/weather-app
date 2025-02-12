@@ -3,9 +3,8 @@ import styles from "./Card.module.css"
 
 function DaysCard(props) {
     function getIconArray() {
-        console.log(props.weatherCodes)
-
         let array = [];
+
         props.weatherCodes.forEach(code => {
             if (code == 0) {
                 array.push(<WiDaySunny size={50} color="white"></WiDaySunny>);
@@ -51,34 +50,34 @@ function DaysCard(props) {
         return array;
     }
 
+    function getDayNames() {
+        let array = [];
+
+        props.dates.forEach((date) => {
+            const newDate = new Date(date);
+            const options = { weekday: 'long' };
+            array.push(newDate.toLocaleDateString('en-US', options));
+
+        });
+
+        return array;
+    };
+      
     const iconCodes = getIconArray();
+    const dayNames = getDayNames();
 
     return (
         <div className={`${styles.daysCard} ${styles.card} flex`}>
             <div className={`${styles.dayCol} flex flex-col`}>
-                <span className={styles.valueItem}>Monday</span>
-                <span className={styles.valueItem}>Tuesday</span>
-                <span className={styles.valueItem}>Wednesday</span>
-                <span className={styles.valueItem}>Thursday</span>
-                <span className={styles.valueItem}>Friday</span>
-                <span className={styles.valueItem}>Saturday</span>
-                <span className={styles.valueItem}>Sunday</span>
+                {dayNames.map((day, index) => (
+                    <span key={index} className={styles.valueItem}>{day}</span>
+                ))}
             </div>
 
             <div className={`${styles.dayLogoCol} flex flex-col`}>
                 {iconCodes.map((icon, index) => (
                     <span key={index} className={styles.valueItem}>{icon}</span>
                 ))}
-            </div>
-
-            <div className={`${styles.nightLogoCol} flex flex-center flex-col`}>
-                <span className={styles.valueItem}>Test</span>
-                <span className={styles.valueItem}>Test</span>
-                <span className={styles.valueItem}>Test</span>
-                <span className={styles.valueItem}>Test</span>
-                <span className={styles.valueItem}>Test</span>
-                <span className={styles.valueItem}>Test</span>
-                <span className={styles.valueItem}>Test</span>
             </div>
 
             <div className={`${styles.dayTempCol} flex flex-col`}>

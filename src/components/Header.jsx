@@ -1,30 +1,14 @@
-import { useEffect, useRef } from 'react';
+import SearchButton from './Button/SearchButton';
+import UnitsButton from './Button/UnitsButton';
 
 function Header(props) {
+    function getFromSearchButton(place) {
+        props.getFromHeader(place);
+    }
+
     const newDate = new Date(props.date);
     const options = { weekday: 'long' };
     const dayName = newDate.toLocaleDateString('en-US', options);
-
-    const searchInputRef = useRef(null);
-
-    useEffect(() => {
-        const searchBtn = searchInputRef.current;
-        
-        const handleKeyPress = (event) => {
-            if (event.key === 'Enter') {
-                event.preventDefault();
-                const data = searchBtn.value;
-                searchBtn.value = "";
-                props.getFromHeader(data);
-            }
-        };
-
-        searchBtn.addEventListener('keypress', handleKeyPress);
-
-        return () => {
-            searchBtn.removeEventListener('keypress', handleKeyPress);
-        };
-    }, []);
 
     return (
         <header>
@@ -34,8 +18,8 @@ function Header(props) {
                 </div>
                 
                 <div className="nav-buttons flex flex-center">
-                    <input className="btn search-btn" type="text" id="searchBtn" name="search" placeholder="Search"ref={searchInputRef}></input>
-                    <button className="btn">Imperial Units</button>
+                    <SearchButton getFromSearchButton={getFromSearchButton} />
+                    <UnitsButton />
                 </div>
             </nav>
         </header>

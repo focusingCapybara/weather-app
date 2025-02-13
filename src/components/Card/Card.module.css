@@ -2,6 +2,7 @@
     border-radius: 50px;
     background-color: #000000;
     opacity: 60%;
+    box-shadow: 0 0 50px 8px #000000;
 }
 
 .daysCard {
@@ -16,8 +17,6 @@
 }
 
 .card h3 {
-    text-align: center;
-    padding-top: 100px;
     color: white;
 }
 
@@ -54,7 +53,6 @@
     width: 90%;
     padding: 30px;
     gap: 15px;
-    box-shadow: 0 0 50px 8px #000000;
 }
 
 .hourForecast .valueItem {

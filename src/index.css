@@ -22,15 +22,6 @@
     flex-direction: column;
 }
 
-.btn {
-    border: none;
-    font-size: 1.5rem;
-    border-radius: 50px;
-    height: 100px;
-    width: 250px;
-    padding: 0 30px;
-}
-
 .nav-bar {
     font-size: 4rem;
     padding-top: 20px;
@@ -49,10 +40,6 @@
 .nav-buttons {
     margin-right: 50px;
     gap: 125px;
-}
-
-.search-btn {
-    width: 600px;
 }
 
 .days-title-container {
@@ -103,4 +90,8 @@ body {
     font-size: 5rem;
     font-weight: bold;
     color: #FFFFFF;
+}
+
+h3 {
+    font-size: 2rem;
 }

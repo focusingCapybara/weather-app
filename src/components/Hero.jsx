@@ -2,8 +2,8 @@ import { WiDaySunny, WiDaySunnyOvercast, WiFog, WiRain, WiSnow, WiThunderstorm }
 import Header from "./Header.jsx"
 
 function Hero(props) {
-    function getFromHeader(data) {
-		props.getFromHero(data);
+    function getFromHeader(place) {
+		props.getFromHero(place);
 	}
 
     function getWeatherIcon() {

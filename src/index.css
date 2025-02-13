@@ -94,3 +94,13 @@ body {
     left: 50%;
     z-index: 2;
 }
+
+.hero-current-weather {
+    width: 100%;
+}
+
+.current-temperature {
+    font-size: 5rem;
+    font-weight: bold;
+    color: #FFFFFF;
+}

@@ -42,10 +42,10 @@ function DaysCard(props) {
             else if (code == 95) {
                 array.push(<WiThunderstorm size={50} color="white"></WiThunderstorm>);
             }
-            else if (code >= 96 && code <= 99)
+            else if (code >= 96 && code <= 99) {
                 array.push(<WiThunderstorm size={50} color="white"></WiThunderstorm>);
             }
-        );
+        });
 
         return array;
     }

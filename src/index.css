@@ -8,6 +8,20 @@
     font-style: normal;
 }
 
+html {
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: #d49c00 transparent;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #d49c00;
+}
+
 .flex {
     display: flex;
     flex-wrap: wrap;

@@ -1,4 +1,4 @@
-import { WiDaySunny, WiDaySunnyOvercast, WiFog, WiRain, WiSnow, WiThunderstorm } from "react-icons/wi";
+import { WiDaySunny, WiDaySunnyOvercast, WiDayCloudy, WiCloud, WiFog, WiRain, WiSnow, WiThunderstorm } from "react-icons/wi";
 import styles from "./Card.module.css"
 
 function DaysCard(props) {
@@ -12,37 +12,22 @@ function DaysCard(props) {
             else if (code >= 1 && code <= 3) {
                 array.push(<WiDaySunnyOvercast size={50} color="white"></WiDaySunnyOvercast>);
             }
+            else if (code == 2) {
+                array.push(<WiDayCloudy size={50} color="white"></WiDayCloudy>);
+            }
+            else if (code == 3) {
+                array.push(<WiCloud size={50} color="white"></WiCloud>);
+            }
             else if (code >= 45 && code <= 48) {
                 array.push(<WiFog size={50} color="white"></WiFog>);
             }
-            else if (code >= 51 && code <= 55) {
-                array.push("");
-            }
-            else if (code >= 56 && code <= 57) {
-                array.push("");
-            }
-            else if (code >= 61 && code <= 65) {
+            else if ((code >= 51 && code <= 67) || (code >= 80 && code <= 82)) {
                 array.push(<WiRain size={50} color="white"></WiRain>);
             }
-            else if (code >= 66 && code <= 67) {
-                array.push("");
-            }
-            else if (code >= 71 && code <= 75) {
+            else if ((code >= 71 && code <= 77) || (code >= 85 && code <= 86)) {
                 array.push(<WiSnow size={50} color="white"></WiSnow>);
             }
-            else if (code == 77) {
-                array.push("");
-            }
-            else if (code >= 80 && code <= 82) {
-                array.push("");
-            }
-            else if (code >= 85 && code <= 86) {
-                array.push("");
-            }
-            else if (code == 95) {
-                array.push(<WiThunderstorm size={50} color="white"></WiThunderstorm>);
-            }
-            else if (code >= 96 && code <= 99) {
+            else if (code >= 95 && code <= 99) {
                 array.push(<WiThunderstorm size={50} color="white"></WiThunderstorm>);
             }
         });

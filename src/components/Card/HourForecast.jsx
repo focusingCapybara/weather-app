@@ -9,8 +9,11 @@ function HourForecast(props) {
             if (props.weatherCodes[i] == 0) {
                 array.push(<WiDaySunny size={50} color="white"></WiDaySunny>);
             }
-            else if (props.weatherCodes[i] >= 1 && props.weatherCodes[i] <= 2) {
+            else if (props.weatherCodes[i] >= 1 && props.weatherCodes[i] <= 3) {
                 array.push(<WiDaySunnyOvercast size={50} color="white"></WiDaySunnyOvercast>);
+            }
+            else if (props.weatherCodes[i] == 2) {
+                array.push(<WiDayCloudy size={50} color="white"></WiDayCloudy>);
             }
             else if (props.weatherCodes[i] == 3) {
                 array.push(<WiCloud size={50} color="white"></WiCloud>);
@@ -18,34 +21,13 @@ function HourForecast(props) {
             else if (props.weatherCodes[i] >= 45 && props.weatherCodes[i] <= 48) {
                 array.push(<WiFog size={50} color="white"></WiFog>);
             }
-            else if (props.weatherCodes[i] >= 51 && props.weatherCodes[i] <= 55) {
-                array.push("");
-            }
-            else if (props.weatherCodes[i] >= 56 && props.weatherCodes[i] <= 57) {
-                array.push("");
-            }
-            else if (props.weatherCodes[i] >= 61 && props.weatherCodes[i] <= 65) {
+            else if ((props.weatherCodes[i] >= 51 && props.weatherCodes[i] <= 67) || (props.weatherCodes[i] >= 80 && props.weatherCodes[i] <= 82)) {
                 array.push(<WiRain size={50} color="white"></WiRain>);
             }
-            else if (props.weatherCodes[i] >= 66 && props.weatherCodes[i] <= 67) {
-                array.push("");
-            }
-            else if (props.weatherCodes[i] >= 71 && props.weatherCodes[i] <= 75) {
+            else if ((props.weatherCodes[i] >= 71 && props.weatherCodes[i] <= 77) || (props.weatherCodes[i] >= 85 && props.weatherCodes[i] <= 86)) {
                 array.push(<WiSnow size={50} color="white"></WiSnow>);
             }
-            else if (props.weatherCodes[i] == 77) {
-                array.push("");
-            }
-            else if (props.weatherCodes[i] >= 80 && props.weatherCodes[i] <= 82) {
-                array.push("");
-            }
-            else if (props.weatherCodes[i] >= 85 && props.weatherCodes[i] <= 86) {
-                array.push("");
-            }
-            else if (props.weatherCodes[i] == 95) {
-                array.push(<WiThunderstorm size={50} color="white"></WiThunderstorm>);
-            }
-            else if (props.weatherCodes[i] >= 96 && props.weatherCodes[i] <= 99) {
+            else if (props.weatherCodes[i] >= 95 && props.weatherCodes[i] <= 99) {
                 array.push(<WiThunderstorm size={50} color="white"></WiThunderstorm>);
             }
         }

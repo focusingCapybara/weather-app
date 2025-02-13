@@ -14,6 +14,7 @@ function Header(props) {
             if (event.key === 'Enter') {
                 event.preventDefault();
                 const data = searchBtn.value;
+                searchBtn.value = "";
                 props.getFromHeader(data);
             }
         };

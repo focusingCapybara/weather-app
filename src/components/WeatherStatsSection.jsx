@@ -9,11 +9,11 @@ function WeatherStatsSection(props) {
             </div>
 
             <div className="weather-days-row flex flex-center">
-                <DaysCard weatherCodes={props.weatherCodes} maxTemperatures={props.maxTemperatures} minTemperatures={props.minTemperatures} dates={props.dailyDates}></DaysCard>
+                <DaysCard isMetric={props.isMetric} weatherCodes={props.weatherCodes} maxTemperatures={props.maxTemperatures} minTemperatures={props.minTemperatures} dates={props.dailyDates}></DaysCard>
             </div>
 
             <div className="weather-card-row flex flex-center">
-                <StatsCard title="Wind" value={props.windSpeed} unit="kmph"></StatsCard>
+                <StatsCard title="Wind" value={props.isMetric ? props.windSpeed : (props.windSpeed * 0.621371).toFixed(1)} isMetric={props.isMetric} unit={props.isMetric ? "kmph" : "mph"}></StatsCard>
                 <StatsCard title="Humidity" value={props.humidity} unit="%"></StatsCard>
                 <StatsCard title="Pressure" value={props.pressure}></StatsCard>
             </div>

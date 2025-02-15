@@ -1,8 +1,19 @@
+import { useEffect, useState } from "react";
 import styles from "./Button.module.css";
 
-function UnitsButton() {
+function UnitsButton(props) {
+    const [isMetric, setIsMetric] = useState(true);
+
+    function changeUnits() {
+        setIsMetric(!isMetric);
+    }
+
+    useEffect(() => {
+        props.getUnitsFromUnitsButton(isMetric);
+    }, [isMetric])
+
     return (
-        <button className={`${styles.btn} ${styles.unitsButton}`} onClick={""}>Imperial Units</button>
+        <button className={`${styles.btn} ${styles.unitsButton}`} onClick={changeUnits}>{isMetric ? "Imperial" : "Metric"} Units</button>
     );
 }
 

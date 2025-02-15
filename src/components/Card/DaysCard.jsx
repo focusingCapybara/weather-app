@@ -47,6 +47,22 @@ function DaysCard(props) {
 
         return array;
     };
+
+    let maxTemperatures = props.maxTemperatures.slice();
+    let minTemperatures = props.minTemperatures.slice();
+
+    if (props.isMetric === false) {
+        maxTemperatures = [];
+        minTemperatures = [];
+
+
+        for (let i = 0; i < props.maxTemperatures.length; i++) {
+            maxTemperatures.push(((props.maxTemperatures[i] * 9/5) + 32).toFixed(1));
+            minTemperatures.push(((props.minTemperatures[i] * 9/5) + 32).toFixed(1));
+        }
+    }
+
+    console.log(maxTemperatures);
       
     const iconCodes = getIconArray();
     const dayNames = getDayNames();
@@ -66,14 +82,14 @@ function DaysCard(props) {
             </div>
 
             <div className={`${styles.dayTempCol} flex flex-col`}>
-                {props.maxTemperatures.map((temp, index) => (
-                    <span key={index} className={styles.valueItem}>{temp}°C</span>
+                {maxTemperatures.map((temp, index) => (
+                    <span key={index} className={styles.valueItem}>{props.isMetric ? temp + "°C" : temp + "F"}</span>
                 ))}
             </div>
 
             <div className={`${styles.nightTempCol} flex flex-col`}>
-                {props.minTemperatures.map((temp, index) => (
-                    <span key={index} className={styles.valueItem}>{temp}°C</span>
+                {minTemperatures.map((temp, index) => (
+                    <span key={index} className={styles.valueItem}>{props.isMetric ? temp + "°C" : temp + "F"}</span>
                 ))}
             </div>
         </div>

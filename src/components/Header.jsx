@@ -3,7 +3,11 @@ import UnitsButton from './Button/UnitsButton';
 
 function Header(props) {
     function getFromSearchButton(place) {
-        props.getFromHeader(place);
+        props.getPlaceFromHeader(place);
+    }
+
+    function getUnitsFromUnitsButton(isMetric) {
+        props.getUnitsFromHeader(isMetric);
     }
 
     const newDate = new Date(props.date);
@@ -19,7 +23,7 @@ function Header(props) {
                 
                 <div className="nav-buttons flex flex-center">
                     <SearchButton getFromSearchButton={getFromSearchButton} />
-                    <UnitsButton />
+                    <UnitsButton getUnitsFromUnitsButton={getUnitsFromUnitsButton}/>
                 </div>
             </nav>
         </header>

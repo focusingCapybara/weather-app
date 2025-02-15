@@ -5,7 +5,11 @@ import WeatherStatsSection from "./components/WeatherStatsSection.jsx"
 import HourForecast from "./components/Card/HourForecast.jsx";
 
 function App() {
-	const [locationName, setLocationName] = useState("Loading...");
+	const [isMetric, setIsMetric] = useState(true);
+	const [error, setError] = useState(null);
+	const [weatherData, setWeatherData] = useState(null);
+	const [geoData, setGeoData] = useState(null);
+	const [locationName, setLocationName] = useState(null);
 
 	async function fetchGeoLocation(place) {
 		try {
@@ -18,7 +22,11 @@ function App() {
 			}
 
 			const geoData = await response.json();
+
 			console.log(geoData);
+
+			setGeoData(geoData);
+
 			let locationName = geoData.results[0].formatted;
 
 			for (let i = 0; i < locationName.length; i++) {
@@ -27,21 +35,18 @@ function App() {
 				}
 			}
 
-			console.log(locationName);
 			setLocationName(locationName);
 
-			const lat = geoData.results[0].geometry.lat;
-			const lng = geoData.results[0].geometry.lng;
-			fetchWeatherData(lat, lng);
+			fetchWeatherData(geoData);
 		}
 		catch (err){
 			setError(err.message)
 		}
 	}
 
-	async function fetchWeatherData(lat, lng) {
+	async function fetchWeatherData(geoData) {
 		try {
-			const WEATHER_URL = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lng}&current=temperature_2m,relative_humidity_2m,is_day,rain,weather_code,surface_pressure,wind_speed_10m&hourly=temperature_2m,weather_code&daily=weather_code,temperature_2m_max,temperature_2m_min&timezone=Europe%2FLondon`;
+			const WEATHER_URL = `https://api.open-meteo.com/v1/forecast?latitude=${geoData.results[0].geometry.lat}&longitude=${geoData.results[0].geometry.lng}&current=temperature_2m,relative_humidity_2m,is_day,rain,weather_code,surface_pressure,wind_speed_10m&hourly=temperature_2m,weather_code&daily=weather_code,temperature_2m_max,temperature_2m_min,rain_sum,showers_sum&timezone=Europe%2FLondon`;
 			const response = await fetch(WEATHER_URL);
 
 			if (!response.ok) {
@@ -49,6 +54,7 @@ function App() {
 			}
 
 			const weatherData = await response.json();
+
 			console.log(weatherData);
 
 			setWeatherData(weatherData);
@@ -58,17 +64,18 @@ function App() {
 		}
 	};
 
+	function getUnitsFromHero(isMetric) {
+		setIsMetric(isMetric);
+	}
+
 	function getFromHero(data) {
 		fetchGeoLocation(data);
 	}
 
-	const [error, setError] = useState(null);
-	const [weatherData, setWeatherData] = useState(null);
-
 	useEffect(() => {
 		async function fetchWeatherData() {
 			try {
-				const WEATHER_URL = "https://api.open-meteo.com/v1/forecast?latitude=55.9521&longitude=-3.1965&current=temperature_2m,relative_humidity_2m,is_day,rain,weather_code,surface_pressure,wind_speed_10m&hourly=temperature_2m,weather_code&daily=weather_code,temperature_2m_max,temperature_2m_min&timezone=Europe%2FLondon";
+				const WEATHER_URL = "https://api.open-meteo.com/v1/forecast?latitude=55.9521&longitude=-3.1965&current=temperature_2m,relative_humidity_2m,is_day,rain,weather_code,surface_pressure,wind_speed_10m&hourly=temperature_2m,weather_code&daily=weather_code,temperature_2m_max,temperature_2m_min,rain_sum,showers_sum&timezone=Europe%2FLondon";
 				const response = await fetch(WEATHER_URL);
 
 				if (!response.ok) {
@@ -76,6 +83,8 @@ function App() {
 				}
 
 				const weatherData = await response.json();
+
+				console.log(weatherData);
 
 				setWeatherData(weatherData);
 			}
@@ -96,6 +105,10 @@ function App() {
 
 				const geoData = await response.json();
 
+				console.log(geoData);
+
+				setGeoData(geoData);
+
 				let locationName = geoData.results[0].formatted;
 
 				for (let i = 0; i < locationName.length; i++) {
@@ -105,7 +118,6 @@ function App() {
 				}
 
 				setLocationName(locationName);
-				console.log(geoData);
 			}
 			catch (err){
 				setError(err.message)
@@ -130,9 +142,9 @@ function App() {
 
 	return (
 		<>
-			<Hero getFromHero={getFromHero} locationName={locationName} date={weatherData.daily.time[0]} weatherCode={weatherData.current.weather_code} temperature={weatherData.current.temperature_2m}></Hero>
-			<HourForecast temperatures={weatherData.hourly.temperature_2m} weatherCodes={weatherData.hourly.weather_code}></HourForecast>
-			<WeatherStatsSection windSpeed={weatherData.current.wind_speed_10m} humidity={weatherData.current.relative_humidity_2m} pressure={weatherData.current.surface_pressure} maxTemperatures={weatherData.daily.temperature_2m_max} minTemperatures={weatherData.daily.temperature_2m_min} weatherCodes={weatherData.daily.weather_code} dailyDates={weatherData.daily.time}></WeatherStatsSection>
+			<Hero getUnitsFromHero={getUnitsFromHero} getFromHero={getFromHero} isMetric={isMetric} locationName={locationName} date={weatherData.daily.time[0]} weatherCode={weatherData.current.weather_code} temperature={weatherData.current.temperature_2m}></Hero>
+			<HourForecast isMetric={isMetric} temperatures={weatherData.hourly.temperature_2m} weatherCodes={weatherData.hourly.weather_code}></HourForecast>
+			<WeatherStatsSection isMetric={isMetric} windSpeed={weatherData.current.wind_speed_10m} humidity={weatherData.current.relative_humidity_2m} pressure={weatherData.current.surface_pressure} maxTemperatures={weatherData.daily.temperature_2m_max} minTemperatures={weatherData.daily.temperature_2m_min} weatherCodes={weatherData.daily.weather_code} dailyDates={weatherData.daily.time}></WeatherStatsSection>
 		</>
 	);
 }

@@ -42,6 +42,14 @@ function HourForecast(props) {
             array.push(props.temperatures[i]);
         }
 
+        if (props.isMetric) {
+            return array;
+        }
+
+        for (let i = 0; i < array.length; i++) {
+            array[i] = ((array[i] * 9/5) + 32).toFixed(1);
+        }
+
         return array;
     }
 
@@ -86,12 +94,11 @@ function HourForecast(props) {
 
                 <div className={`${styles.hourTempCol} flex`}>
                     {temperatures.map((temp, index) => (
-                        <span key={index} className={styles.valueItem}>{temp}°C</span>
+                        <span key={index} className={styles.valueItem}>{props.isMetric ? temp + "°C" : temp + "F"}</span>
                     ))}
                 </div>
             </div>
         </div>
-        
     );
 }
 

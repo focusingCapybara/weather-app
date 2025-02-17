@@ -1,4 +1,4 @@
-import { WiDaySunny, WiDaySunnyOvercast, WiFog, WiRain, WiSnow, WiThunderstorm } from "react-icons/wi";
+import { WiDaySunny, WiDaySunnyOvercast, WiDayCloudy, WiCloud, WiFog, WiRain, WiSnow, WiThunderstorm } from "react-icons/wi";
 import Header from "./Header.jsx"
 
 function Hero(props) {
@@ -11,34 +11,38 @@ function Hero(props) {
     }
 
     function getWeatherIcon() {
-        let icon = null;
-
-        if (props.weatherCode == 0) {
-            icon = <WiDaySunny size={500} color="white"></WiDaySunny>;
-        }
-        else if (props.weatherCode >= 1 && props.weatherCode <= 3) {
-            icon = <WiDaySunnyOvercast size={500} color="white"></WiDaySunnyOvercast>;
-        }
-        else if (props.weatherCode == 2) {
-            icon = <WiDayCloudy size={500} color="white"></WiDayCloudy>;
-        }
-        else if (props.weatherCode == 3) {
-            icon = <WiCloud size={500} color="white"></WiCloud>;
-        }
-        else if (props.weatherCode >= 45 && props.weatherCode <= 48) {
-            icon = <WiFog size={500} color="white"></WiFog>;
-        }
-        else if ((props.weatherCode >= 51 && props.weatherCode <= 67) || (props.weatherCode >= 80 && props.weatherCode <= 82)) {
-            icon = <WiRain size={500} color="white"></WiRain>;
-        }
-        else if ((props.weatherCode >= 71 && props.weatherCode <= 77) || (props.weatherCode >= 85 && props.weatherCode <= 86)) {
-            icon = <WiSnow size={500} color="white"></WiSnow>;
-        }
-        else if (props.weatherCode >= 95 && props.weatherCode <= 99) {
-            icon = <WiThunderstorm size={500} color="white"></WiThunderstorm>;
-        }
-
-        return icon;
+        const weatherIcons = {
+            0: <WiDaySunny size={500} color="white" />,
+            1: <WiDaySunnyOvercast size={500} color="white" />,
+            2: <WiDayCloudy size={500} color="white" />,
+            3: <WiCloud size={500} color="white" />,
+            45: <WiFog size={500} color="white" />,
+            48: <WiFog size={500} color="white" />,
+            51: <WiRain size={500} color="white" />,
+            53: <WiRain size={500} color="white" />,
+            55: <WiRain size={500} color="white" />,
+            56: <WiRain size={500} color="white" />,
+            57: <WiRain size={500} color="white" />,
+            61: <WiRain size={500} color="white" />,
+            63: <WiRain size={500} color="white" />,
+            65: <WiRain size={500} color="white" />,
+            66: <WiRain size={500} color="white" />,
+            67: <WiRain size={500} color="white" />,
+            80: <WiRain size={500} color="white" />,
+            81: <WiRain size={500} color="white" />,
+            82: <WiRain size={500} color="white" />,
+            71: <WiSnow size={500} color="white" />,
+            73: <WiSnow size={500} color="white" />,
+            75: <WiSnow size={500} color="white" />,
+            77: <WiSnow size={500} color="white" />,
+            85: <WiSnow size={500} color="white" />,
+            86: <WiSnow size={500} color="white" />,
+            95: <WiThunderstorm size={500} color="white" />,
+            96: <WiThunderstorm size={500} color="white" />,
+            99: <WiThunderstorm size={500} color="white" />,
+        };
+        
+        return weatherIcons[props.weatherCode] || "Unknown Icon";
     }
 
     const icon = getWeatherIcon();

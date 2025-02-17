@@ -3,34 +3,42 @@ import styles from "./Card.module.css"
 
 function DaysCard(props) {
     function getIconArray() {
+        const weatherIcons = {
+            0: <WiDaySunny size={500} color="white" />,
+            1: <WiDaySunnyOvercast size={500} color="white" />,
+            2: <WiDayCloudy size={500} color="white" />,
+            3: <WiCloud size={500} color="white" />,
+            45: <WiFog size={500} color="white" />,
+            48: <WiFog size={500} color="white" />,
+            51: <WiRain size={500} color="white" />,
+            53: <WiRain size={500} color="white" />,
+            55: <WiRain size={500} color="white" />,
+            56: <WiRain size={500} color="white" />,
+            57: <WiRain size={500} color="white" />,
+            61: <WiRain size={500} color="white" />,
+            63: <WiRain size={500} color="white" />,
+            65: <WiRain size={500} color="white" />,
+            66: <WiRain size={500} color="white" />,
+            67: <WiRain size={500} color="white" />,
+            80: <WiRain size={500} color="white" />,
+            81: <WiRain size={500} color="white" />,
+            82: <WiRain size={500} color="white" />,
+            71: <WiSnow size={500} color="white" />,
+            73: <WiSnow size={500} color="white" />,
+            75: <WiSnow size={500} color="white" />,
+            77: <WiSnow size={500} color="white" />,
+            85: <WiSnow size={500} color="white" />,
+            86: <WiSnow size={500} color="white" />,
+            95: <WiThunderstorm size={500} color="white" />,
+            96: <WiThunderstorm size={500} color="white" />,
+            99: <WiThunderstorm size={500} color="white" />,
+        };
+
         let array = [];
 
-        props.weatherCodes.forEach(code => {
-            if (code == 0) {
-                array.push(<WiDaySunny size={50} color="white"></WiDaySunny>);
-            }
-            else if (code >= 1 && code <= 3) {
-                array.push(<WiDaySunnyOvercast size={50} color="white"></WiDaySunnyOvercast>);
-            }
-            else if (code == 2) {
-                array.push(<WiDayCloudy size={50} color="white"></WiDayCloudy>);
-            }
-            else if (code == 3) {
-                array.push(<WiCloud size={50} color="white"></WiCloud>);
-            }
-            else if (code >= 45 && code <= 48) {
-                array.push(<WiFog size={50} color="white"></WiFog>);
-            }
-            else if ((code >= 51 && code <= 67) || (code >= 80 && code <= 82)) {
-                array.push(<WiRain size={50} color="white"></WiRain>);
-            }
-            else if ((code >= 71 && code <= 77) || (code >= 85 && code <= 86)) {
-                array.push(<WiSnow size={50} color="white"></WiSnow>);
-            }
-            else if (code >= 95 && code <= 99) {
-                array.push(<WiThunderstorm size={50} color="white"></WiThunderstorm>);
-            }
-        });
+        for (let i = 0; i < props.weatherCodes.length; i++) {
+            array.push(weatherIcons[props.weatherCodes[i]]);
+        }
 
         return array;
     }

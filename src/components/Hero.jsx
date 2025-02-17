@@ -2,8 +2,8 @@ import { WiDaySunny, WiDaySunnyOvercast, WiDayCloudy, WiCloud, WiFog, WiRain, Wi
 import Header from "./Header.jsx"
 
 function Hero(props) {
-    function getPlaceFromHeader(place) {
-		props.getFromHero(place);
+    function getPlaceNameFromHeader(place) {
+		props.getPlaceNameFromHero(place);
 	}
 
     function getUnitsFromHeader(isMetric) {
@@ -49,7 +49,7 @@ function Hero(props) {
 
     return (
         <div className="hero flex flex-col">
-            <Header getPlaceFromHeader={getPlaceFromHeader} getUnitsFromHeader={getUnitsFromHeader} locationName={props.locationName} date={props.date}></Header>
+            <Header getPlaceNameFromHeader={getPlaceNameFromHeader} getUnitsFromHeader={getUnitsFromHeader} locationName={props.locationName} date={props.date}></Header>
 
             <div className="hero-current-weather flex flex-col flex-center">
                 <span>{icon}</span>

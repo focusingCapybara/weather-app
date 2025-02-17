@@ -3,7 +3,7 @@ import UnitsButton from './Button/UnitsButton';
 
 function Header(props) {
     function getFromSearchButton(place) {
-        props.getPlaceFromHeader(place);
+        props.getPlaceNameFromHeader(place);
     }
 
     function getUnitsFromUnitsButton(isMetric) {

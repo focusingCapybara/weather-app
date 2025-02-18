@@ -22,78 +22,63 @@ function App() {
 		setPlace(data);
 	}
 
+	// Gets geographic location
 	useEffect(() => {
-		async function fetchWeatherData(geoData) {
-			let WEATHER_URL;
-
-			if (geoData == null) {
-				WEATHER_URL = "https://api.open-meteo.com/v1/forecast?latitude=55.9521&longitude=-3.1965&current=temperature_2m,relative_humidity_2m,is_day,rain,weather_code,surface_pressure,wind_speed_10m&hourly=temperature_2m,weather_code&daily=weather_code,temperature_2m_max,temperature_2m_min,rain_sum,showers_sum&timezone=Europe%2FLondon";
-
-			}
-			else {
-				WEATHER_URL = `https://api.open-meteo.com/v1/forecast?latitude=${geoData.results[0].geometry.lat}&longitude=${geoData.results[0].geometry.lng}&current=temperature_2m,relative_humidity_2m,is_day,rain,weather_code,surface_pressure,wind_speed_10m&hourly=temperature_2m,weather_code&daily=weather_code,temperature_2m_max,temperature_2m_min,rain_sum,showers_sum&timezone=Europe%2FLondon`;
-			}
-
+		async function fetchGeoLocation() {
 			try {
-				const response = await fetch(WEATHER_URL);
-
+				const GEO_API = import.meta.env.VITE_GEO_API_KEY;
+				let url = place == null
+					? `https://api.opencagedata.com/geocode/v1/json?q=Edinburgh&key=${GEO_API}`
+					: `https://api.opencagedata.com/geocode/v1/json?q=${place}&key=${GEO_API}`;
+	
+				const response = await fetch(url);
+	
 				if (!response.ok) {
 					throw new Error("Network response was not ok");
 				}
-
+	
+				const geoData = await response.json();
+				console.log(geoData);
+	
+				setGeoData(geoData);
+	
+				let locationName = geoData.results[0].formatted.split(",")[0];
+				setLocationName(locationName);
+			}
+			catch (err) {
+				setError(err.message);
+			}
+		}
+	
+		fetchGeoLocation();
+	}, [place]);
+	
+	// Update weather data if geoData is available
+	useEffect(() => {
+		if (!geoData) return;
+	
+		async function fetchWeatherData() {
+			try {
+				const WEATHER_URL = `https://api.open-meteo.com/v1/forecast?latitude=${geoData.results[0].geometry.lat}&longitude=${geoData.results[0].geometry.lng}&current=temperature_2m,relative_humidity_2m,is_day,rain,weather_code,surface_pressure,wind_speed_10m&hourly=temperature_2m,weather_code&daily=weather_code,temperature_2m_max,temperature_2m_min,rain_sum,showers_sum&timezone=Europe%2FLondon`;
+	
+				const response = await fetch(WEATHER_URL);
+	
+				if (!response.ok) {
+					throw new Error("Network response was not ok");
+				}
+	
 				const weatherData = await response.json();
-
 				console.log(weatherData);
-
+	
 				setWeatherData(weatherData);
 			}
 			catch (err) {
 				setError(err.message);
 			}
-		};
-
-		async function fetchGeoLocation(place) {
-			const GEO_API = import.meta.env.VITE_GEO_API_KEY;
-			let URL;
-
-			if (place == null) {
-				URL = `https://api.opencagedata.com/geocode/v1/json?q=Edinburgh&key=${GEO_API}`;
-			}
-			else {
-				URL = `https://api.opencagedata.com/geocode/v1/json?q=${place}&key=${GEO_API}`;
-			}
-
-			try {
-				const response = await fetch(URL);
-
-				if (!response.ok) {
-					throw new Error("Network response was not ok");
-				}
-
-				const geoData = await response.json();
-
-				console.log(geoData);
-
-				setGeoData(geoData);
-
-				let locationName = geoData.results[0].formatted;
-
-				for (let i = 0; i < locationName.length; i++) {
-					if (locationName[i] === ",") {
-						locationName = locationName.slice(0, i);
-					}
-				}
-
-				setLocationName(locationName);
-			}
-			catch (err){
-				setError(err.message)
-			}
 		}
-		
-		fetchWeatherData(geoData);
-		fetchGeoLocation(place);
-	}, [place]);
+	
+		fetchWeatherData();
+	}, [geoData]);
 
 
 	// What happens when data is not loaded

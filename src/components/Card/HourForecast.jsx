@@ -66,7 +66,7 @@ function HourForecast(props) {
     
     return (
         <div className="weather-hour-row flex flex-center">
-            <div className={`${styles.hourForecast} ${styles.card} flex flex-col flex-center`}>
+            <div className={`${styles.hourForecast} ${styles.card} flex flex-col`}>
                 <div className={`${styles.hourCol} flex`}>
                     <span className={styles.valueItem}>00:00</span>
                     <span className={styles.valueItem}>01:00</span>

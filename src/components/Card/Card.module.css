@@ -38,6 +38,7 @@
     height: 50px;
     width: 50px;
     color: white;
+    min-width: 50px;
 }
 
 .hourCol .valueItem,
@@ -50,8 +51,7 @@
 .hourForecast {
     background-color: #f5c74a;
     opacity: 90%;
-    width: 90%;
-    padding: 30px 30px 30px 150px;
+    padding: 30px;
     gap: 15px;
     overflow-y: hidden;
     overflow-x: auto;
@@ -67,4 +67,16 @@
 .hourTempCol {
     gap: 50px;
     flex-wrap: nowrap;
+}
+
+@media screen and (max-width: 1500px) {
+    .daysCard {
+        width: 75%;
+    }
+}
+
+@media screen and (max-width: 548px) {
+    .daysCard {
+        width: 100%;
+    }   
 }

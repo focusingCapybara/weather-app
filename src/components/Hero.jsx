@@ -52,7 +52,7 @@ function Hero(props) {
             <Header getPlaceNameFromHeader={getPlaceNameFromHeader} getUnitsFromHeader={getUnitsFromHeader} locationName={props.locationName} date={props.date}></Header>
 
             <div className="hero-current-weather flex flex-col flex-center">
-                <span>{icon}</span>
+                <span className="icon">{icon}</span>
                 <span className="current-temperature">{props.isMetric ? props.temperature + "°C" : ((props.temperature * 9/5) + 32).toFixed(1) + "F"}</span>
             </div>
         </div>

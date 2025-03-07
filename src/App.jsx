@@ -98,7 +98,7 @@ function App() {
 		<>
 			<Hero getUnitsFromHero={getUnitsFromHero} getPlaceNameFromHero={getPlaceNameFromHero} isMetric={isMetric} locationName={locationName} date={weatherData.daily.time[0]} weatherCode={weatherData.current.weather_code} temperature={weatherData.current.temperature_2m}></Hero>
 			<HourForecast isMetric={isMetric} temperatures={weatherData.hourly.temperature_2m} weatherCodes={weatherData.hourly.weather_code} rainChances={weatherData.hourly.precipitation_probability}></HourForecast>
-			<WeatherStatsSection isMetric={isMetric} windSpeed={weatherData.current.wind_speed_10m} humidity={weatherData.current.relative_humidity_2m} pressure={weatherData.current.surface_pressure} cloudCover={weatherData.current.cloud_cover} maxTemperatures={weatherData.daily.temperature_2m_max} minTemperatures={weatherData.daily.temperature_2m_min} weatherCodes={weatherData.daily.weather_code} dailyDates={weatherData.daily.time}></WeatherStatsSection>
+			<WeatherStatsSection isMetric={isMetric} windSpeed={weatherData.current.wind_speed_10m} humidity={weatherData.current.relative_humidity_2m} pressure={weatherData.current.surface_pressure} cloudCover={weatherData.current.cloud_cover} rainChances={weatherData.daily.precipitation_probability_max} maxTemperatures={weatherData.daily.temperature_2m_max} minTemperatures={weatherData.daily.temperature_2m_min} weatherCodes={weatherData.daily.weather_code} dailyDates={weatherData.daily.time}></WeatherStatsSection>
 		</>
 	);
 }

@@ -49,7 +49,7 @@
 }
 
 .hourForecast {
-    background-color: #f5c74a;
+    background-color: var(--dynamic-background-2);
     opacity: 90%;
     padding: 30px;
     gap: 15px;

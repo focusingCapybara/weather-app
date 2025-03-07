@@ -1,3 +1,8 @@
+:root {
+    --dynamic-background-1: #FFC21A;
+    --dynamic-background-2: #f5c74a;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -47,7 +52,7 @@ html {
 }
 
 .hero {
-    background-color: #FFC21A;
+    background: linear-gradient(to bottom, var(--dynamic-background-1), var(--dynamic-background-2));
     height: 75vh;
 }
 
@@ -179,7 +184,7 @@ h3 {
 }
 
 .custom-shape-divider-bottom-1740415370 .shape-fill {
-    fill: #FFC21A;
+    fill: var(--dynamic-background-1);
 }
 
 @media screen and (max-width: 1500px) {

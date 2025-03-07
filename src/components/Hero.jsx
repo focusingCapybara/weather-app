@@ -39,13 +39,31 @@ function Hero(props) {
             86: <WiSnow size={500} color="white" />,
             95: <WiThunderstorm size={500} color="white" />,
             96: <WiThunderstorm size={500} color="white" />,
-            99: <WiThunderstorm size={500} color="white" />,
+            99: <WiThunderstorm size={500} color="white" />
         };
         
         return weatherIcons[props.weatherCode] || "Unknown Icon";
     }
 
     const icon = getWeatherIcon();
+
+    if (icon.type.name === "WiDaySunny" || icon.type.name === "WiDayOvercast" || icon.type.name === "WiDayCloudy") {
+        document.documentElement.style.setProperty("--dynamic-background-1", "#FFC21A");
+        document.documentElement.style.setProperty("--dynamic-background-2", "#f5c74a");
+    }
+    else if (icon.type.name === "WiCloud" || icon.type.name === "WiSnow") {
+        document.documentElement.style.setProperty("--dynamic-background-1", "#1879d1");
+        document.documentElement.style.setProperty("--dynamic-background-2", "#0869c0");
+    }
+    else if (icon.type.name === "WiRain" || icon.type.name === "WiThunderstorm") {
+        document.documentElement.style.setProperty("--dynamic-background-1", "#2492f1");
+        document.documentElement.style.setProperty("--dynamic-background-2", "#2492f1");
+    }
+    else if (icon.type.name === "WiFog") {
+        document.documentElement.style.setProperty("--dynamic-background-1", "#c4c4c4");
+        document.documentElement.style.setProperty("--dynamic-background-2", "#a6a6a6");
+    }
+    
 
     return (
         <div className="hero flex flex-col">

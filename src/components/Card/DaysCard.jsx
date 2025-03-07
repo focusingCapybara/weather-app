@@ -69,8 +69,6 @@ function DaysCard(props) {
             minTemperatures.push(((props.minTemperatures[i] * 9/5) + 32).toFixed(1));
         }
     }
-
-    console.log(maxTemperatures);
       
     const iconCodes = getIconArray();
     const dayNames = getDayNames();
@@ -80,6 +78,12 @@ function DaysCard(props) {
             <div className={`${styles.dayCol} flex flex-col`}>
                 {dayNames.map((day, index) => (
                     <span key={index} className={styles.valueItem}>{day}</span>
+                ))}
+            </div>
+
+            <div className={`${styles.rainCol} flex flex-col`}>
+                {props.rainChances.map((rain, index) => (
+                    <span key={index} className={styles.valueItem}>{rain + "%"}</span>
                 ))}
             </div>
 

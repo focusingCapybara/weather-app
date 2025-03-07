@@ -10,7 +10,7 @@ function WeatherStatsSection(props) {
             </div>
 
             <div className="weather-days-row flex flex-center">
-                <DaysCard isMetric={props.isMetric} weatherCodes={props.weatherCodes} maxTemperatures={props.maxTemperatures} minTemperatures={props.minTemperatures} dates={props.dailyDates}></DaysCard>
+                <DaysCard isMetric={props.isMetric} rainChances={props.rainChances} weatherCodes={props.weatherCodes} maxTemperatures={props.maxTemperatures} minTemperatures={props.minTemperatures} dates={props.dailyDates}></DaysCard>
             </div>
 
             <div className="current-title-container flex flex-center">

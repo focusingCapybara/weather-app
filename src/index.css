@@ -189,8 +189,8 @@ h3 {
 
 .separator {
     border: none;
-    height: 4px;
-    background-color: #000000;
+    height: 1px;
+    background-color: #FFFFFF;
 }
 
 @media screen and (max-width: 1500px) {

@@ -16,7 +16,7 @@
 html {
     scroll-behavior: smooth;
     scrollbar-width: thin;
-    scrollbar-color: #d49c00 transparent;
+    scrollbar-color: var(--dynamic-background-2) transparent;
 }
 
 ::-webkit-scrollbar-track {
@@ -24,7 +24,7 @@ html {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #d49c00;
+    background: var(--dynamic-background-2);
 }
 
 .flex {

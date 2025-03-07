@@ -48,23 +48,30 @@ function Hero(props) {
     const icon = getWeatherIcon();
 
     if (icon.type.name === "WiDaySunny" || icon.type.name === "WiDayOvercast" || icon.type.name === "WiDayCloudy") {
-        document.documentElement.style.setProperty("--dynamic-background-1", "#FFC21A");
-        document.documentElement.style.setProperty("--dynamic-background-2", "#f5c74a");
+        document.documentElement.style.setProperty("--dynamic-background-1", "#FFA500");
+        document.documentElement.style.setProperty("--dynamic-background-2", "#FFD700");
     }
-    else if (icon.type.name === "WiCloud" || icon.type.name === "WiSnow") {
-        document.documentElement.style.setProperty("--dynamic-background-1", "#1879d1");
-        document.documentElement.style.setProperty("--dynamic-background-2", "#0869c0");
+    else if (icon.type.name === "WiCloud") {
+        document.documentElement.style.setProperty("--dynamic-background-1", "#B0BEC5");
+        document.documentElement.style.setProperty("--dynamic-background-2", "#78909C");
     }
-    else if (icon.type.name === "WiRain" || icon.type.name === "WiThunderstorm") {
-        document.documentElement.style.setProperty("--dynamic-background-1", "#2492f1");
-        document.documentElement.style.setProperty("--dynamic-background-2", "#2492f1");
+    else if (icon.type.name === "WiRain") {
+        document.documentElement.style.setProperty("--dynamic-background-1", "#37474F");
+        document.documentElement.style.setProperty("--dynamic-background-2", "#607D8B");
+    }
+    else if (icon.type.name === "WiThunderstorm") {
+        document.documentElement.style.setProperty("--dynamic-background-1", "#263238");
+        document.documentElement.style.setProperty("--dynamic-background-2", "#546E7A");
+    }
+    else if (icon.type.name === "WiSnow") {
+        document.documentElement.style.setProperty("--dynamic-background-1", "#E1F5FE");
+        document.documentElement.style.setProperty("--dynamic-background-2", "#B3E5FC");
     }
     else if (icon.type.name === "WiFog") {
-        document.documentElement.style.setProperty("--dynamic-background-1", "#c4c4c4");
-        document.documentElement.style.setProperty("--dynamic-background-2", "#a6a6a6");
+        document.documentElement.style.setProperty("--dynamic-background-1", "#ECEFF1");
+        document.documentElement.style.setProperty("--dynamic-background-2", "#B0BEC5");
     }
     
-
     return (
         <div className="hero flex flex-col">
             <Header getPlaceNameFromHeader={getPlaceNameFromHeader} getUnitsFromHeader={getUnitsFromHeader} locationName={props.locationName} date={props.date}></Header>

@@ -59,7 +59,7 @@ function App() {
 	
 		async function fetchWeatherData() {
 			try {
-				const WEATHER_URL = `https://api.open-meteo.com/v1/forecast?latitude=${geoData.results[0].geometry.lat}&longitude=${geoData.results[0].geometry.lng}&current=temperature_2m,relative_humidity_2m,is_day,rain,weather_code,surface_pressure,wind_speed_10m&hourly=temperature_2m,weather_code&daily=weather_code,temperature_2m_max,temperature_2m_min,rain_sum,showers_sum&timezone=Europe%2FLondon`;
+				const WEATHER_URL = `https://api.open-meteo.com/v1/forecast?latitude=${geoData.results[0].geometry.lat}&longitude=${geoData.results[0].geometry.lng}&current=temperature_2m,relative_humidity_2m,is_day,precipitation,rain,weather_code,cloud_cover,surface_pressure,wind_speed_10m&hourly=temperature_2m,precipitation_probability,weather_code&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_sum,precipitation_probability_max&timezone=Europe%2FLondon`
 	
 				const response = await fetch(WEATHER_URL);
 	
@@ -97,8 +97,8 @@ function App() {
 	return (
 		<>
 			<Hero getUnitsFromHero={getUnitsFromHero} getPlaceNameFromHero={getPlaceNameFromHero} isMetric={isMetric} locationName={locationName} date={weatherData.daily.time[0]} weatherCode={weatherData.current.weather_code} temperature={weatherData.current.temperature_2m}></Hero>
-			<HourForecast isMetric={isMetric} temperatures={weatherData.hourly.temperature_2m} weatherCodes={weatherData.hourly.weather_code}></HourForecast>
-			<WeatherStatsSection isMetric={isMetric} windSpeed={weatherData.current.wind_speed_10m} humidity={weatherData.current.relative_humidity_2m} pressure={weatherData.current.surface_pressure} maxTemperatures={weatherData.daily.temperature_2m_max} minTemperatures={weatherData.daily.temperature_2m_min} weatherCodes={weatherData.daily.weather_code} dailyDates={weatherData.daily.time}></WeatherStatsSection>
+			<HourForecast isMetric={isMetric} temperatures={weatherData.hourly.temperature_2m} weatherCodes={weatherData.hourly.weather_code} rainChances={weatherData.hourly.precipitation_probability}></HourForecast>
+			<WeatherStatsSection isMetric={isMetric} windSpeed={weatherData.current.wind_speed_10m} humidity={weatherData.current.relative_humidity_2m} pressure={weatherData.current.surface_pressure} cloudCover={weatherData.current.cloud_cover} maxTemperatures={weatherData.daily.temperature_2m_max} minTemperatures={weatherData.daily.temperature_2m_min} weatherCodes={weatherData.daily.weather_code} dailyDates={weatherData.daily.time}></WeatherStatsSection>
 		</>
 	);
 }

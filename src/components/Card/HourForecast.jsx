@@ -61,8 +61,19 @@ function HourForecast(props) {
         return array;
     }
 
+    function getRainChances() {
+        let array = [];
+
+        for (let i = 0; i < 24; i++) {
+            array.push(props.rainChances[i]);
+        }
+
+        return array;
+    }
+
     const iconCodes = getIconArray();
     const temperatures = getHourlyTemperatures();
+    const rainChances = getRainChances();
     
     return (
         <div className="weather-hour-row flex flex-center">
@@ -103,6 +114,14 @@ function HourForecast(props) {
                 <div className={`${styles.hourTempCol} flex`}>
                     {temperatures.map((temp, index) => (
                         <span key={index} className={styles.valueItem}>{props.isMetric ? temp + "°C" : temp + "F"}</span>
+                    ))}
+                </div>
+
+                <hr className="separator"></hr>
+
+                <div className={`${styles.hourRainCol} flex`}>
+                    {rainChances.map((rain, index) => (
+                        <span key={index} className={styles.valueItem}>{rain + "%"}</span>
                     ))}
                 </div>
             </div>

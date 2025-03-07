@@ -187,6 +187,12 @@ h3 {
     fill: var(--dynamic-background-1);
 }
 
+.separator {
+    border: none;
+    height: 4px;
+    background-color: #000000;
+}
+
 @media screen and (max-width: 1500px) {
     .weather-grid {
         grid-template-rows: repeat(4, 1fr);

@@ -1,8 +1,12 @@
+/* Re-usable variables */
 :root {
     --dynamic-background-1: #FFC21A;
     --dynamic-background-2: #f5c74a;
+
+    --hero-font-colour: #000000;
 }
 
+/* Normalize ---------------------------------------------------------------- */
 * {
     margin: 0;
     padding: 0;
@@ -19,6 +23,16 @@ html {
     scrollbar-color: var(--dynamic-background-2) transparent;
 }
 
+body {
+    background-color: #E2E2E2;
+    opacity: 0;
+    transition: opacity 1s ease-in;
+}
+
+h3 {
+    font-size: 2rem;
+}
+
 ::-webkit-scrollbar-track {
     background: transparent;
 }
@@ -27,6 +41,7 @@ html {
     background: var(--dynamic-background-2);
 }
 
+/* Utilities ---------------------------------------------------------------- */
 .flex {
     display: flex;
     flex-wrap: wrap;
@@ -41,6 +56,12 @@ html {
     flex-direction: column;
 }
 
+/* Hero ---------------------------------------------------------------- */
+.hero {
+    background: linear-gradient(to bottom, var(--dynamic-background-1), var(--dynamic-background-2));
+    height: 75vh;
+}
+
 .nav-bar {
     font-size: 4rem;
     padding-top: 20px;
@@ -49,11 +70,8 @@ html {
 .nav-location {
     margin-right: auto;
     margin-left: 100px;
-}
-
-.hero {
-    background: linear-gradient(to bottom, var(--dynamic-background-1), var(--dynamic-background-2));
-    height: 75vh;
+    color: var(--hero-font-colour);
+    transition: color 1s;
 }
 
 .nav-buttons {
@@ -61,17 +79,71 @@ html {
     gap: 125px;
 }
 
-.days-title-container,
-.current-title-container {
+.hero-current-weather {
+    width: 100%;
+}
+
+.hero-current-temperature {
+    font-size: 5rem;
+    font-weight: bold;
+    color: #FFFFFF;
+}
+
+.hero-icon {
+    transform: translateX(50px);
+    animation: slideRightLeft linear 5s infinite running;
+}
+
+@keyframes slideRightLeft {
+    50% {
+        transform: translateX(-50px);
+    }
+    100% {
+        transform: translateX(50px);
+    }
+}
+
+/* Hourly forecast ---------------------------------------------------------------- */
+.weather-hour-row {
+    position: absolute;
+    transform: translateX(-50%);
+    width: 90vw;
+    top: 65%;
+    left: 50%;
+    z-index: 2;
+    flex-wrap: nowrap;
+}
+
+.separator {
+    min-width: 2590px;
+    border: none;
+    height: 1px;
+    background-color: #FFFFFF;
+}
+
+.hero,
+.days-section {
+    position: relative;
+}
+
+.hero,
+.days-section {
+    z-index: 1;
+}
+
+.days-section {
+    position: relative;
+    margin-top: 200px;
+}
+
+/* Daily forecast ---------------------------------------------------------------- */
+.forecast-title {
     margin-top: 100px;
     margin-bottom: 30px;
     font-size: 3rem;
 }
 
-.weather-card-row {
-    padding-bottom: 300px;
-}
-
+/* Current weather ---------------------------------------------------------------- */
 .weather-grid {
     display: grid;
     grid-template-rows: repeat(3, 200px);
@@ -107,92 +179,6 @@ html {
     grid-column: 9 / 13;
 }
 
-body {
-    background-color: #E2E2E2;
-    opacity: 0;
-    transition: opacity 1s ease-in;
-}
-
-.hero,
-.weather-stats-section {
-    position: relative;
-}
-
-.hero,
-.weather-stats-section {
-    z-index: 1;
-}
-
-.weather-stats-section {
-    position: relative;
-    margin-top: 200px;
-}
-
-.weather-hour-row {
-    position: absolute;
-    transform: translateX(-50%);
-    width: 90vw;
-    top: 65%;
-    left: 50%;
-    z-index: 2;
-    flex-wrap: nowrap;
-}
-
-.hero-current-weather {
-    width: 100%;
-}
-
-.current-temperature {
-    font-size: 5rem;
-    font-weight: bold;
-    color: #FFFFFF;
-}
-
-h3 {
-    font-size: 2rem;
-}
-
-.icon {
-    transform: translateX(50px);
-    animation: slideRightLeft linear 5s infinite running;
-}
-
-@keyframes slideRightLeft {
-    50% {
-        transform: translateX(-50px);
-    }
-    100% {
-        transform: translateX(50px);
-    }
-}
-
-.custom-shape-divider-bottom-1740415370 {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    overflow: hidden;
-    line-height: 0;
-    transform: rotate(180deg);
-}
-
-.custom-shape-divider-bottom-1740415370 svg {
-    position: relative;
-    display: block;
-    width: calc(150% + 1.3px);
-    height: 300px;
-}
-
-.custom-shape-divider-bottom-1740415370 .shape-fill {
-    fill: var(--dynamic-background-1);
-}
-
-.separator {
-    border: none;
-    height: 1px;
-    background-color: #FFFFFF;
-}
-
 @media screen and (max-width: 1500px) {
     .weather-grid {
         grid-template-rows: repeat(4, 1fr);
@@ -218,4 +204,23 @@ h3 {
         grid-row: 4 / 5;
         grid-column: 1 / 2;
     }
+}
+
+/* Footer ---------------------------------------------------------------- */
+.footer-shape {
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.footer-shape svg {
+    position: relative;
+    display: block;
+    width: calc(150% + 1.3px);
+    height: 300px;
+}
+
+.footer-shape .shape-fill {
+    fill: var(--dynamic-background-1);
 }

@@ -57,6 +57,9 @@ function DaysCard(props) {
         return array;
     };
 
+    const iconCodes = getIconArray();
+    const dayNames = getDayNames();
+    
     let maxTemperatures = props.maxTemperatures.slice();
     let minTemperatures = props.minTemperatures.slice();
 
@@ -64,16 +67,12 @@ function DaysCard(props) {
         maxTemperatures = [];
         minTemperatures = [];
 
-
         for (let i = 0; i < props.maxTemperatures.length; i++) {
             maxTemperatures.push(((props.maxTemperatures[i] * 9/5) + 32).toFixed(1));
             minTemperatures.push(((props.minTemperatures[i] * 9/5) + 32).toFixed(1));
         }
     }
       
-    const iconCodes = getIconArray();
-    const dayNames = getDayNames();
-
     return (
         <div className="days-section">
             <div className="forecast-title flex flex-center">
@@ -82,34 +81,60 @@ function DaysCard(props) {
 
             <div className="weather-days-row flex flex-center">
                 <div className={`${styles.daysCard} ${styles.card} flex`}>
-                    <div className={`${styles.dayCol} flex flex-col`}>
-                        {dayNames.map((day, index) => (
-                            <span key={index} className={styles.valueItem}>{day}</span>
-                        ))}
+                    <div className={`${styles.dayCol} flex`}>
+                        <span className={styles.valueItem}>{dayNames[0]}</span>
+                        <span className={styles.valueItem}>{<Droplet size={20} color="white" />}{props.rainChances[0]}%</span>
+                        <span className={styles.valueItem}>{iconCodes[0]}</span>
+                        <span className={styles.valueItem}>{maxTemperatures[0]}{props.isMetric ? "°C" : "F"}</span>
+                        <span className={styles.valueItem}>{minTemperatures[0]}{props.isMetric ? "°C" : "F"}</span>
                     </div>
 
-                    <div className={`${styles.rainCol} flex flex-col`}>
-                        {props.rainChances.map((rain, index) => (
-                            <span key={index} className={styles.valueItem}>{<Droplet size={20} color="white" />}{rain + "%"}</span>
-                        ))}
+                    <div className={`${styles.dayCol} flex`}>
+                        <span className={styles.valueItem}>{dayNames[1]}</span>
+                        <span className={styles.valueItem}>{<Droplet size={20} color="white" />}{props.rainChances[1]}%</span>
+                        <span className={styles.valueItem}>{iconCodes[1]}</span>
+                        <span className={styles.valueItem}>{maxTemperatures[1]}{props.isMetric ? "°C" : "F"}</span>
+                        <span className={styles.valueItem}>{minTemperatures[1]}{props.isMetric ? "°C" : "F"}</span>
                     </div>
 
-                    <div className={`${styles.dayLogoCol} flex flex-col`}>
-                        {iconCodes.map((icon, index) => (
-                            <span key={index} className={styles.valueItem}>{icon}</span>
-                        ))}
+                    <div className={`${styles.dayCol} flex`}>
+                        <span className={styles.valueItem}>{dayNames[2]}</span>
+                        <span className={styles.valueItem}>{<Droplet size={20} color="white" />}{props.rainChances[2]}%</span>
+                        <span className={styles.valueItem}>{iconCodes[2]}</span>
+                        <span className={styles.valueItem}>{maxTemperatures[2]}{props.isMetric ? "°C" : "F"}</span>
+                        <span className={styles.valueItem}>{minTemperatures[2]}{props.isMetric ? "°C" : "F"}</span>
                     </div>
 
-                    <div className={`${styles.dayTempCol} flex flex-col`}>
-                        {maxTemperatures.map((temp, index) => (
-                            <span key={index} className={styles.valueItem}>{props.isMetric ? temp + "°C" : temp + "F"}</span>
-                        ))}
+                    <div className={`${styles.dayCol} flex`}>
+                        <span className={styles.valueItem}>{dayNames[3]}</span>
+                        <span className={styles.valueItem}>{<Droplet size={20} color="white" />}{props.rainChances[3]}%</span>
+                        <span className={styles.valueItem}>{iconCodes[3]}</span>
+                        <span className={styles.valueItem}>{maxTemperatures[3]}{props.isMetric ? "°C" : "F"}</span>
+                        <span className={styles.valueItem}>{minTemperatures[3]}{props.isMetric ? "°C" : "F"}</span>
                     </div>
 
-                    <div className={`${styles.nightTempCol} flex flex-col`}>
-                        {minTemperatures.map((temp, index) => (
-                            <span key={index} className={styles.valueItem}>{props.isMetric ? temp + "°C" : temp + "F"}</span>
-                        ))}
+                    <div className={`${styles.dayCol} flex`}>
+                        <span className={styles.valueItem}>{dayNames[4]}</span>
+                        <span className={styles.valueItem}>{<Droplet size={20} color="white" />}{props.rainChances[4]}%</span>
+                        <span className={styles.valueItem}>{iconCodes[4]}</span>
+                        <span className={styles.valueItem}>{maxTemperatures[4]}{props.isMetric ? "°C" : "F"}</span>
+                        <span className={styles.valueItem}>{minTemperatures[4]}{props.isMetric ? "°C" : "F"}</span>
+                    </div>
+
+                    <div className={`${styles.dayCol} flex`}>
+                        <span className={styles.valueItem}>{dayNames[5]}</span>
+                        <span className={styles.valueItem}>{<Droplet size={20} color="white" />}{props.rainChances[5]}%</span>
+                        <span className={styles.valueItem}>{iconCodes[5]}</span>
+                        <span className={styles.valueItem}>{maxTemperatures[5]}{props.isMetric ? "°C" : "F"}</span>
+                        <span className={styles.valueItem}>{minTemperatures[5]}{props.isMetric ? "°C" : "F"}</span>
+                    </div>
+
+                    <div className={`${styles.dayCol} flex`}>
+                        <span className={styles.valueItem}>{dayNames[6]}</span>
+                        <span className={styles.valueItem}>{<Droplet size={20} color="white" />}{props.rainChances[6]}%</span>
+                        <span className={styles.valueItem}>{iconCodes[6]}</span>
+                        <span className={styles.valueItem}>{maxTemperatures[6]}{props.isMetric ? "°C" : "F"}</span>
+                        <span className={styles.valueItem}>{minTemperatures[6]}{props.isMetric ? "°C" : "F"}</span>
                     </div>
                 </div>
             </div>

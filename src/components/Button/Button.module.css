@@ -1,5 +1,6 @@
 .btn {
     background-color: var(--dynamic-background-2);
+    color: var(--hero-font-colour);
     border: none;
     font-size: 1.5rem;
     border-radius: 50px;
@@ -20,4 +21,18 @@
 
 .unitsButton {
     cursor: pointer;
+}
+
+.unitsButton:active {
+    animation: buttonClick 0.5s;
+    transition: animation;
+}
+
+@keyframes buttonClick {
+    50% {
+        transform: scale(0.8);
+    }
+    100% {
+        transform: scale(1);
+    }
 }

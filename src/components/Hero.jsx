@@ -52,12 +52,14 @@ function Hero(props) {
     }
 
     const icon = getWeatherIcon();
+    console.log(icon)
 
     switch (icon.type.name) {
         case "WiDaySunny":
-        case "WiDayOvercast":
+        case "WiDaySunnyOvercast":
         case "WiDayCloudy":
             changeTheme("#FFA500", "#FFD700");
+            console.log("I was here")
             break;
         case "WiCloud":
             changeTheme("#B0BEC5", "#78909C", "#FFFFFF");

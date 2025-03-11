@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 
 import Hero from "./components/Hero.jsx"
-import WeatherStatsSection from "./components/WeatherStatsSection.jsx"
 import HourForecast from "./components/Card/HourForecast.jsx";
+import DaysCard from './components/Card/DaysCard.jsx';
+import CurrentWeather from "./components/CurrentWeather.jsx"
 
 function App() {
 	const [isMetric, setIsMetric] = useState(true);
@@ -98,7 +99,8 @@ function App() {
 		<>
 			<Hero getUnitsFromHero={getUnitsFromHero} getPlaceNameFromHero={getPlaceNameFromHero} isMetric={isMetric} locationName={locationName} date={weatherData.daily.time[0]} weatherCode={weatherData.current.weather_code} temperature={weatherData.current.temperature_2m}></Hero>
 			<HourForecast isMetric={isMetric} temperatures={weatherData.hourly.temperature_2m} weatherCodes={weatherData.hourly.weather_code} rainChances={weatherData.hourly.precipitation_probability}></HourForecast>
-			<WeatherStatsSection isMetric={isMetric} windSpeed={weatherData.current.wind_speed_10m} humidity={weatherData.current.relative_humidity_2m} pressure={weatherData.current.surface_pressure} cloudCover={weatherData.current.cloud_cover} rainChances={weatherData.daily.precipitation_probability_max} maxTemperatures={weatherData.daily.temperature_2m_max} minTemperatures={weatherData.daily.temperature_2m_min} weatherCodes={weatherData.daily.weather_code} dailyDates={weatherData.daily.time}></WeatherStatsSection>
+			<DaysCard isMetric={isMetric} dailyDates={weatherData.daily.time} rainChances={weatherData.daily.precipitation_probability_max} maxTemperatures={weatherData.daily.temperature_2m_max} minTemperatures={weatherData.daily.temperature_2m_min} weatherCodes={weatherData.daily.weather_code}></DaysCard>
+			<CurrentWeather isMetric={isMetric} windSpeed={weatherData.current.wind_speed_10m} humidity={weatherData.current.relative_humidity_2m} pressure={weatherData.current.surface_pressure} cloudCover={weatherData.current.cloud_cover}></CurrentWeather>
 		</>
 	);
 }

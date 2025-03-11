@@ -1,37 +1,38 @@
 import { WiDaySunny, WiDaySunnyOvercast, WiDayCloudy, WiCloud, WiFog, WiRain, WiSnow, WiThunderstorm } from "react-icons/wi";
-import styles from "./Card.module.css"
+import { Droplet } from "lucide-react";
+import styles from "./Card.module.css";
 
 function DaysCard(props) {
     function getIconArray() {
         const weatherIcons = {
-            0: <WiDaySunny size={500} color="white" />,
-            1: <WiDaySunnyOvercast size={500} color="white" />,
-            2: <WiDayCloudy size={500} color="white" />,
-            3: <WiCloud size={500} color="white" />,
-            45: <WiFog size={500} color="white" />,
-            48: <WiFog size={500} color="white" />,
-            51: <WiRain size={500} color="white" />,
-            53: <WiRain size={500} color="white" />,
-            55: <WiRain size={500} color="white" />,
-            56: <WiRain size={500} color="white" />,
-            57: <WiRain size={500} color="white" />,
-            61: <WiRain size={500} color="white" />,
-            63: <WiRain size={500} color="white" />,
-            65: <WiRain size={500} color="white" />,
-            66: <WiRain size={500} color="white" />,
-            67: <WiRain size={500} color="white" />,
-            80: <WiRain size={500} color="white" />,
-            81: <WiRain size={500} color="white" />,
-            82: <WiRain size={500} color="white" />,
-            71: <WiSnow size={500} color="white" />,
-            73: <WiSnow size={500} color="white" />,
-            75: <WiSnow size={500} color="white" />,
-            77: <WiSnow size={500} color="white" />,
-            85: <WiSnow size={500} color="white" />,
-            86: <WiSnow size={500} color="white" />,
-            95: <WiThunderstorm size={500} color="white" />,
-            96: <WiThunderstorm size={500} color="white" />,
-            99: <WiThunderstorm size={500} color="white" />,
+            0: <WiDaySunny size={60} color="white" />,
+            1: <WiDaySunnyOvercast size={60} color="white" />,
+            2: <WiDayCloudy size={60} color="white" />,
+            3: <WiCloud size={60} color="white" />,
+            45: <WiFog size={60} color="white" />,
+            48: <WiFog size={60} color="white" />,
+            51: <WiRain size={60} color="white" />,
+            53: <WiRain size={60} color="white" />,
+            55: <WiRain size={60} color="white" />,
+            56: <WiRain size={60} color="white" />,
+            57: <WiRain size={60} color="white" />,
+            61: <WiRain size={60} color="white" />,
+            63: <WiRain size={60} color="white" />,
+            65: <WiRain size={60} color="white" />,
+            66: <WiRain size={60} color="white" />,
+            67: <WiRain size={60} color="white" />,
+            80: <WiRain size={60} color="white" />,
+            81: <WiRain size={60} color="white" />,
+            82: <WiRain size={60} color="white" />,
+            71: <WiSnow size={60} color="white" />,
+            73: <WiSnow size={60} color="white" />,
+            75: <WiSnow size={60} color="white" />,
+            77: <WiSnow size={60} color="white" />,
+            85: <WiSnow size={60} color="white" />,
+            86: <WiSnow size={60} color="white" />,
+            95: <WiThunderstorm size={60} color="white" />,
+            96: <WiThunderstorm size={60} color="white" />,
+            99: <WiThunderstorm size={60} color="white" />,
         };
 
         let array = [];
@@ -46,7 +47,7 @@ function DaysCard(props) {
     function getDayNames() {
         let array = [];
 
-        props.dates.forEach((date) => {
+        props.dailyDates.forEach((date) => {
             const newDate = new Date(date);
             const options = { weekday: 'long' };
             array.push(newDate.toLocaleDateString('en-US', options));
@@ -74,35 +75,43 @@ function DaysCard(props) {
     const dayNames = getDayNames();
 
     return (
-        <div className={`${styles.daysCard} ${styles.card} flex`}>
-            <div className={`${styles.dayCol} flex flex-col`}>
-                {dayNames.map((day, index) => (
-                    <span key={index} className={styles.valueItem}>{day}</span>
-                ))}
+        <div className="days-section">
+            <div className="forecast-title flex flex-center">
+                <h2>7-Day Forecast</h2>
             </div>
 
-            <div className={`${styles.rainCol} flex flex-col`}>
-                {props.rainChances.map((rain, index) => (
-                    <span key={index} className={styles.valueItem}>{rain + "%"}</span>
-                ))}
-            </div>
+            <div className="weather-days-row flex flex-center">
+                <div className={`${styles.daysCard} ${styles.card} flex`}>
+                    <div className={`${styles.dayCol} flex flex-col`}>
+                        {dayNames.map((day, index) => (
+                            <span key={index} className={styles.valueItem}>{day}</span>
+                        ))}
+                    </div>
 
-            <div className={`${styles.dayLogoCol} flex flex-col`}>
-                {iconCodes.map((icon, index) => (
-                    <span key={index} className={styles.valueItem}>{icon}</span>
-                ))}
-            </div>
+                    <div className={`${styles.rainCol} flex flex-col`}>
+                        {props.rainChances.map((rain, index) => (
+                            <span key={index} className={styles.valueItem}>{<Droplet size={20} color="white" />}{rain + "%"}</span>
+                        ))}
+                    </div>
 
-            <div className={`${styles.dayTempCol} flex flex-col`}>
-                {maxTemperatures.map((temp, index) => (
-                    <span key={index} className={styles.valueItem}>{props.isMetric ? temp + "°C" : temp + "F"}</span>
-                ))}
-            </div>
+                    <div className={`${styles.dayLogoCol} flex flex-col`}>
+                        {iconCodes.map((icon, index) => (
+                            <span key={index} className={styles.valueItem}>{icon}</span>
+                        ))}
+                    </div>
 
-            <div className={`${styles.nightTempCol} flex flex-col`}>
-                {minTemperatures.map((temp, index) => (
-                    <span key={index} className={styles.valueItem}>{props.isMetric ? temp + "°C" : temp + "F"}</span>
-                ))}
+                    <div className={`${styles.dayTempCol} flex flex-col`}>
+                        {maxTemperatures.map((temp, index) => (
+                            <span key={index} className={styles.valueItem}>{props.isMetric ? temp + "°C" : temp + "F"}</span>
+                        ))}
+                    </div>
+
+                    <div className={`${styles.nightTempCol} flex flex-col`}>
+                        {minTemperatures.map((temp, index) => (
+                            <span key={index} className={styles.valueItem}>{props.isMetric ? temp + "°C" : temp + "F"}</span>
+                        ))}
+                    </div>
+                </div>
             </div>
         </div>
     );

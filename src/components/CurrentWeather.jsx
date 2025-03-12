@@ -15,11 +15,11 @@ function CurrentWeather(props) {
                     </div>
 
                     <div className="weather-card-2">
-                        <StatsCard title="Humidity" icon={<Droplet size={200} color="white" />} value={props.humidity} unit="%"></StatsCard>
+                        <StatsCard title="Humidity" icon={<Droplet size={170} color="white" />} value={props.humidity} unit="%"></StatsCard>
                     </div>
 
                     <div className="weather-card-3">
-                        <StatsCard title="Pressure" icon={<Gauge size={200} color="white" />} value={props.pressure}></StatsCard>
+                        <StatsCard title="Pressure" icon={<Gauge size={170} color="white" />} value={props.pressure}></StatsCard>
                     </div>
 
                     <div className="weather-card-4">

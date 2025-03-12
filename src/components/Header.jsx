@@ -17,7 +17,7 @@ function Header(props) {
     return (
         <header>
             <nav className="nav-bar flex flex-center">
-                <div className="nav-location">
+                <div className="nav-location truncate">
                     <span>{props.locationName} | {dayName}</span>
                 </div>
                 

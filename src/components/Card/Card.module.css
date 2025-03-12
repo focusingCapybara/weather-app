@@ -14,10 +14,18 @@
 .statsCard {
     height: 100%;
     width: 100%;
+    align-items: flex-start;
+}
+
+.statsCard .valueItem {
+    font-size: 30px;
 }
 
 .card h3 {
+    width: 100%;
+    text-align: center;
     color: white;
+    padding-top: 20px;
 }
 
 .dayCol {

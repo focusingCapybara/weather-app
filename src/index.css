@@ -103,12 +103,27 @@ h3 {
     }
 }
 
+@media screen and (max-height: 1170px) {
+    .hero-icon svg {
+        height: 400px;
+        width: 400px;
+    }
+}
+
+.truncate {
+    width: 1000px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+
 /* Hourly forecast ---------------------------------------------------------------- */
 .weather-hour-row {
     position: absolute;
     transform: translateX(-50%);
     width: 90vw;
-    top: 65%;
+    top: calc(75vh - 130.5px);
     left: 50%;
     z-index: 2;
     flex-wrap: nowrap;
@@ -177,6 +192,10 @@ h3 {
     width: 100%;
     grid-row: 3 / 4;
     grid-column: 9 / 13;
+}
+
+.stats-info {
+    gap: 10px;
 }
 
 @media screen and (max-width: 1500px) {

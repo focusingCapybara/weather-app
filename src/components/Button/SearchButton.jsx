@@ -7,12 +7,13 @@ function SearchButton(props) {
     useEffect(() => {
         const searchBtn = searchInputRef.current;
         
+        // Gets place name entered by the user
         const handleKeyPress = (event) => {
             if (event.key === 'Enter') {
                 event.preventDefault();
-                const data = searchBtn.value;
+                const placeName = searchBtn.value;
                 searchBtn.value = "";
-                props.getFromSearchButton(data);
+                props.getFromSearchButton(placeName);
             }
         };
 

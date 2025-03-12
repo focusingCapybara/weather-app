@@ -2,10 +2,14 @@ import { WiDaySunny, WiDaySunnyOvercast, WiDayCloudy, WiCloud, WiFog, WiRain, Wi
 import Header from "./Header.jsx"
 
 function Hero(props) {
+    // When Header components calls this function,
+    // it will call a function from hero to transfer data
     function getPlaceNameFromHeader(place) {
 		props.getPlaceNameFromHero(place);
 	}
 
+    // When Header component calls this function,
+    // it will call a function from App component to transfer data
     function getUnitsFromHeader(isMetric) {
         props.getUnitsFromHero(isMetric);
     }
@@ -45,6 +49,7 @@ function Hero(props) {
         return weatherIcons[props.weatherCode] || "Unknown Icon";
     }
 
+    // Changes CSS theme variables
     function changeTheme(background1, background2, font="#000000") {
         document.documentElement.style.setProperty("--dynamic-background-1", background1);
         document.documentElement.style.setProperty("--dynamic-background-2", background2);
@@ -52,8 +57,8 @@ function Hero(props) {
     }
 
     const icon = getWeatherIcon();
-    console.log(icon)
 
+    // Calls changeTheme to update the theme based on current weather
     switch (icon.type.name) {
         case "WiDaySunny":
         case "WiDaySunnyOvercast":

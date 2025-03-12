@@ -51,10 +51,12 @@ function HourForecast(props) {
             array.push(props.temperatures[i]);
         }
 
+        // Returns metric temperatures
         if (props.isMetric) {
             return array;
         }
 
+        // Returns imperial temperatures
         for (let i = 0; i < array.length; i++) {
             array[i] = ((array[i] * 9/5) + 32).toFixed(1);
         }
@@ -72,6 +74,7 @@ function HourForecast(props) {
         return array;
     }
 
+    // Declares arrays for hourly data
     const iconCodes = getIconArray();
     const temperatures = getHourlyTemperatures();
     const rainChances = getRainChances();

@@ -44,6 +44,7 @@ function DaysCard(props) {
         return array;
     }
 
+    // Gets 7 days starting from the current day
     function getDayNames() {
         let array = [];
 
@@ -63,6 +64,7 @@ function DaysCard(props) {
     let maxTemperatures = props.maxTemperatures.slice();
     let minTemperatures = props.minTemperatures.slice();
 
+    // Updates temperatures array to imperial values
     if (props.isMetric === false) {
         maxTemperatures = [];
         minTemperatures = [];

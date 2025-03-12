@@ -4,10 +4,12 @@ import styles from "./Button.module.css";
 function UnitsButton(props) {
     const [isMetric, setIsMetric] = useState(true);
 
+    // Updates the units state
     function changeUnits() {
         setIsMetric(!isMetric);
     }
 
+    // Returns boolean value of isMetric
     useEffect(() => {
         props.getUnitsFromUnitsButton(isMetric);
     }, [isMetric])
